@@ -1,0 +1,13 @@
+/**
+    Project: $__PROJECT__
+    File   : $__FILENAME__
+    Autor  : $__USER__
+    Date   : $__DATE__
+*/
+#include "$__FILE__"
+
+int main(int argc, char const *argv[])
+{
+    printf("Proyecto $__PROJECT__");
+    return 0;
+}

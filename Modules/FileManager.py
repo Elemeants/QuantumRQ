@@ -1,9 +1,10 @@
+import os
 from Modules.Models.FileModel import File
 
 
 class FileManager:
     @staticmethod
-    def create(_file: str) -> bool:
+    def createFile(_file: str) -> bool:
         try:
             open(_file, "x").close()
             return True
@@ -11,14 +12,25 @@ class FileManager:
             return False
 
     @staticmethod
-    def exist(_file: str) -> bool:
+    def existFile(_file: str) -> bool:
         from os import path
         return path.exists(_file)
 
     @staticmethod
-    def remove(_file: str):
-        raise NotImplementedError
+    def removeFile(_file: str) -> int:
+        if FileManager.existFile(_file):
+            try:
+                os.remove(_file)
+                return 0
+            except (OSError, IOError, FileNotFoundError):
+                return -1
+        return 1
 
     @staticmethod
-    def read(_file: str) -> File:
+    def readFile(_file: str) -> File:
+        return File(_file, os.getcwd())
+
+    @staticmethod
+    def write(_file: File, data: str) -> bool:
         raise NotImplementedError
+
