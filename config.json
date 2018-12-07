@@ -1,8 +1,11 @@
 {
-  "version": 1.0,
+  "version": 0.4,
+  "path": "C:\\Users\\Jdany\\Desktop\\Codes\\QuantumRQ",
   "properties": {
     "mainFile": {
-      "name": "main.cpp"
+      "name": "main.cpp",
+      "templatePath": "/Templates/",
+      "templateName": "main.template"
     }
   }
 }
