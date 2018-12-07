@@ -7,7 +7,7 @@ class FileManager:
         try:
             open(_file, "x").close()
             return True
-        except (FileExistsError):
+        except FileExistsError:
             return False
 
     @staticmethod

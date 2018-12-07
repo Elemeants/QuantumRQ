@@ -1,12 +1,10 @@
 import os
-
-from Modules.ConsoleLoger import ConsoleLoger
+from Modules.ConsoleLoger import *
 from Modules.FileManager import FileManager
 from Modules.Models.FileModel import File
 
 # Testing modules...
-ConsoleLoger.Info("Testing")
-FileManager.create("text.txt")
-ConsoleLoger.Ok("Archivo creado")
-test = File("text.txt", os.getcwd())
-print(test.__str__())
+logInfo("Mensaje de info")
+logError("Mensaje de error")
+logOk("Mensaje de ok")
+logWarning("Mensa de warning")
