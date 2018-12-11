@@ -2,6 +2,7 @@
   "project_name": "template",
   "version": 1.0,
   "languaje": "c++",
+  "buildOptions": "",
   "libraries": {
   }
 }

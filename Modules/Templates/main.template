@@ -4,10 +4,10 @@
     Autor  : $__USER__
     Date   : $__DATE__
 */
-#include "$__FILE__"
+#include "stdio.h"
 
 int main(int argc, char const *argv[])
 {
-    printf("Proyecto $__PROJECT__");
+    printf("Proyecto $__PROJECT__ \n");
     return 0;
 }
