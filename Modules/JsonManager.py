@@ -3,7 +3,7 @@ import json
 from Modules.FileManager import FileManager
 
 
-def getJson(_file: str):
+def getJson(_file: str) -> json:
     try:
         if FileManager.existFile(_file):
             fileJson = FileManager.readPath(_file)
@@ -18,5 +18,5 @@ def saveJson(_file: str, _data) -> bool:
         with open(_file, "w") as f:
             json.dump(_data, f, indent=4, sort_keys=True)
         return True
-    except():
+    except(json.decoder.JSONDecodeError, OSError, FileNotFoundError):
         return False

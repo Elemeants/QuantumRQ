@@ -1,26 +1,29 @@
 import sys
 
-from Modules.JsonManager import *
 from Modules.PathManager import *
 from Modules.Scripts.Compiler import *
 from Modules.TemplateManager import *
 
 config = []
 paths = []
+QuantumPath = sys.argv[1]
+ProjectPath = sys.argv[2]
 
 
 def initQuantumRQ():
     global config
-    os.chdir(sys.argv[1])
-    config = getJson("config.json")
-    if config:
-        config["path"] = os.getcwd()
-        saveJson("config.json", config)
-    os.chdir(sys.argv[2])
+    try:
+        gotoDir(QuantumPath)
+        config = getJson("config.json")
+        if config:
+            config["path"] = QuantumPath
+            saveJson("config.json", config)
+    except():
+        logError("No se pudo iniciar QuantumRQ")
 
 
 def generateNewProject(_projectname: str) -> bool:
-    os.chdir(sys.argv[2])
+    gotoDir(ProjectPath)
     logInfo(f"Generando nuevo proyecto {_projectname}")
     if not FolderManager.existFolder(_projectname.capitalize()):
         FolderManager.createFolder(_projectname.capitalize())
@@ -91,7 +94,34 @@ class addComponent:
         print(" Agregando componente")
 
 
+# Working in AUTO HELP
+def ShowHelp(namespace):
+    gotoDir(QuantumPath)
+    helpPath = config["path"] + config["helpPath"]
+    jsonHelp = getJson(helpPath)
+    if namespace[0] != '':
+        for x in range(0, namespace.__len__()):
+            if jsonHelp.get(namespace[x]):
+                jsonHelp = jsonHelp[namespace[x]]
+            else:
+                print()
+                logHelp(getJson(helpPath)["errorhelp"])
+                return
+    try:
+        print()
+        if jsonHelp.get("help"):
+            logHelp(jsonHelp["help"])
+            print()
+        for var in jsonHelp:
+            logHelp('{:>12}   -->   {:>12}'.format(var, "test"))
+
+        print()
+    except (TypeError, KeyError):
+        pass
+
+
 initQuantumRQ()
-if generateNewProject("TestProject"):
-    os.chdir("./..")
-    deleteProject("TestProject", True)
+ShowHelp(["commands", "add"])
+# if generateNewProject("Test"):
+#    gotoDir(ProjectPath)
+#    deleteProject("Test", True)

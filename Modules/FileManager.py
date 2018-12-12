@@ -43,7 +43,7 @@ class FileManager:
             file_data = access.read()
             access.close()
             return file_data
-        except():
+        except...:
             return False
 
     @staticmethod

@@ -15,25 +15,25 @@ DEBUG = Color.CBEIGE2
 INFO = Color.CBLUE2
 
 
-def logDebug(msg: str):
+def logDebug(msg):
     print(DEFAULT.format(" DBUG ", msg, ERROR, DEBUG))
 
 
-def logError(msg: str):
+def logError(msg):
     print(DEFAULT.format(" FAIL ", msg, ERROR, NORMAL))
 
 
-def logOk(msg: str):
+def logOk(msg):
     print(DEFAULT.format("  OK  ", msg, OK, NORMAL))
 
 
-def logWarning(msg: str):
+def logWarning(msg):
     print(DEFAULT.format(" WARN ", msg, WARNING, NORMAL))
 
 
-def logInfo(msg: str):
+def logInfo(msg):
     print(DEFAULT.format(" INFO ", msg, INFO, NORMAL))
 
 
-def logHelp(msg: str):
-    print("{1}{0}{2}".format(msg, NORMAL, ConsoleColors.CEND))
+def logHelp(msg):
+    print("  {1}{0}{2}".format(msg, NORMAL, ConsoleColors.CEND))

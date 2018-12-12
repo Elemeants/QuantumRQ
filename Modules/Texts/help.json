@@ -1,0 +1,61 @@
+{
+  "help": "Quantum is a Script that helps you to write and manage code",
+  "errorhelp": "The command is'nt valid",
+  "commands": {
+    "new": {
+      "help": "New is a command that helps you tu create a new file...",
+      "params": {
+        "project_name": "This is the name for the new project",
+        "force": "This forces to generate the project deleting the files of a non empty folder"
+      }
+    },
+    "remove": {
+      "help": "Removes components from the project",
+      "params": {
+        "componente_name": "Name of the component"
+      }
+    },
+    "add": {
+      "help": "Allows you to add components to your project",
+      "params": {
+        "class": {
+          "help": "Generates a class inside a new file in your project",
+          "params": {
+            "classname": "The name for the generated class"
+          }
+        },
+        "interface": {
+          "help": "Generates a interface in a new file",
+          "params": {
+            "interface_name": "The name for the generated interface"
+          }
+        },
+        "library": {
+          "help": "Generates a empty library",
+          "params": {
+            "library_name": "The name for the generated library files"
+          }
+        }
+      }
+    },
+    "clean": {
+      "help": "Clean helps you to delete the compilated files from your projects...",
+      "params": {}
+    },
+    "build": {
+      "help": "Builds your project...",
+      "params": {
+        "options": {
+          "help": "deletes or sets the options to your building",
+          "params": {
+            "set": "Sets the build options of the project",
+            "delete": "Deletes the build options of the project"
+          }
+        }
+      }
+    },
+    "delete": {
+      "help": "Deletes the project and her folder..."
+    }
+  }
+}

@@ -1,5 +1,6 @@
 {
-  "path": "C:\\Users\\Jdany\\Desktop\\Codes\\QuantumRQ",
+  "helpPath": "Modules\\Texts\\help.json",
+  "path": "C:\\Users\\Jdany\\Desktop\\Codes\\QuantumRQ\\",
     "properties": {
         "configFile": {
             "name": "config.json",
