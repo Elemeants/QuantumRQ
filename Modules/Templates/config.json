@@ -1,8 +1,8 @@
 {
-  "project_name": "template",
-  "version": 1.0,
-  "languaje": "c++",
-  "buildOptions": "",
-  "libraries": {
-  }
+    "buildOptions": "",
+    "languaje": "c++",
+    "libraries": {},
+    "mainFile": "main",
+    "project_name": "TestProject",
+    "version": 1.0
 }

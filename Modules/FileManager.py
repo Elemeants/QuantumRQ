@@ -37,6 +37,16 @@ class FileManager:
         return File(_file, os.getcwd())
 
     @staticmethod
+    def readPath(_path: str) -> File:
+        try:
+            access = open(_path, "r")
+            file_data = access.read()
+            access.close()
+            return file_data
+        except():
+            return False
+
+    @staticmethod
     def write(_file: File, data: str) -> bool:
         try:
             file = open(_file.file_name, "w+")

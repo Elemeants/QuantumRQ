@@ -11,7 +11,12 @@ ERROR = Color.CRED2
 OK = Color.CGREEN2
 WARNING = Color.CVIOLET2
 NORMAL = Color.CYELLOW2
+DEBUG = Color.CBEIGE2
 INFO = Color.CBLUE2
+
+
+def logDebug(msg: str):
+    print(DEFAULT.format(" DBUG ", msg, ERROR, DEBUG))
 
 
 def logError(msg: str):

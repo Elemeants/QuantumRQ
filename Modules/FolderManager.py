@@ -2,6 +2,7 @@ import errno
 import os
 import shutil
 from os import path
+
 from Modules.ConsoleLoger import *
 
 
@@ -31,10 +32,12 @@ class FolderManager:
     @staticmethod
     def removeFolder(_path: str, treeMode: bool) -> bool:
         if treeMode:
-            shutil.rmtree(path, ignore_errors=True)
+            shutil.rmtree(_path, ignore_errors=True)
+            logOk(f"Carpeta {_path} eliminada")
         else:
             try:
                 os.rmdir(_path)
+                logOk(f"Carpeta {_path} eliminada")
             except OSError:
                 pass
         return FolderManager.existFolder(_path)
