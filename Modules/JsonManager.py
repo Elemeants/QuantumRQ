@@ -17,6 +17,7 @@ def saveJson(_file: str, _data) -> bool:
     try:
         with open(_file, "w") as f:
             json.dump(_data, f, indent=4, sort_keys=True)
+            f.close()
         return True
     except(json.decoder.JSONDecodeError, OSError, FileNotFoundError):
         return False

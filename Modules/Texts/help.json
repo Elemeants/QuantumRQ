@@ -4,6 +4,7 @@
   "commands": {
     "new": {
       "help": "New is a command that helps you tu create a new file...",
+      "usage": " new <project_name> <force>",
       "params": {
         "project_name": "This is the name for the new project",
         "force": "This forces to generate the project deleting the files of a non empty folder"

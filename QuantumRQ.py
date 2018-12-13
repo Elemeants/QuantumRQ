@@ -1,3 +1,4 @@
+import json
 import sys
 
 from Modules.PathManager import *
@@ -98,8 +99,11 @@ class addComponent:
 def ShowHelp(namespace):
     gotoDir(QuantumPath)
     helpPath = config["path"] + config["helpPath"]
-    jsonHelp = getJson(helpPath)
+    jsonHelp: json = getJson(helpPath)
+    if not namespace.__len__() > 0:
+        return
     if namespace[0] != '':
+        # Iteration in the json file to go to the add key
         for x in range(0, namespace.__len__()):
             if jsonHelp.get(namespace[x]):
                 jsonHelp = jsonHelp[namespace[x]]
@@ -110,18 +114,44 @@ def ShowHelp(namespace):
     try:
         print()
         if jsonHelp.get("help"):
-            logHelp(jsonHelp["help"])
+            logHelp(f"  Command help : {jsonHelp['help']}")
             print()
-        for var in jsonHelp:
-            logHelp('{:>12}   -->   {:>12}'.format(var, "test"))
-
-        print()
+        if jsonHelp.get("usage"):
+            logHelp(f'       Example : {jsonHelp["usage"]}')
+            print()
+        if jsonHelp.get("params"):
+            params: json = jsonHelp["params"]
+            for _param in params:
+                try:
+                    if params[_param].get("help"):
+                        logHelp('{:>15} --> {:<12}'.format(_param, params[_param]["help"]))
+                except AttributeError:
+                    logHelp('{:>15} --> {:<12}'.format(_param, params[_param]))
+                    continue
+            print()
     except (TypeError, KeyError):
         pass
 
 
+# Inicializando Quantum
 initQuantumRQ()
-ShowHelp(["commands", "add"])
-# if generateNewProject("Test"):
-#    gotoDir(ProjectPath)
-#    deleteProject("Test", True)
+params = sys.argv.copy()
+params.remove(sys.argv[0])
+params.remove(sys.argv[1])
+params.remove(sys.argv[2])
+
+if params.__len__() > 0:
+    command = params[0]
+    params.remove(params[0])
+    nParams = params.__len__()
+    if command == 'help':
+        ShowHelp(params)
+    if command == "new":
+        if 0 < nParams <= 1:
+            generateNewProject(params[0])
+        else:
+            ShowHelp(["commands", "new"])
+
+
+else:
+    logHelp("QuantumRQ")
